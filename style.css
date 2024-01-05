@@ -1,0 +1,180 @@
+body {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-image: url('./public/bg_md_2.jpeg');
+  background-repeat: no-repeat;
+  background-size: auto 100vh;
+  background-color: #1c1d20;
+  font-family: 'Manrope', sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.interface {
+  margin-bottom: 10px;
+}
+
+.interface .top-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.text {
+
+}
+
+.btn {
+  padding: 5px 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: #ffffff;
+  font-size: 25px;
+  flex: 1;
+  text-transform: uppercase;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.229);
+  display: none;
+}
+
+.overlay.shown {
+  display: block;
+}
+
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  border-radius: 5px;
+  background-color: #b9b396;
+}
+
+.popup-content {
+  padding: 10px 10px 0 10px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 10px;
+}
+
+.new-city-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px;
+  padding: 10px;
+  font-size: 30px;
+  outline: none;
+}
+
+.cities-container {
+
+}
+
+.cities-container .city {
+  padding: 10px 15px;
+  height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background-image: url('./public/city_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.cities-container .city .city-btn {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.cities-container .city .city-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.cities-container .city .city-cards {
+  position: relative;
+  width: 40px;
+  text-align: center;
+}
+
+.cities-container .city:first-child .city-cards:before {
+  content: 'CARDS';
+  font-size: 17px;
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  text-shadow: 1px 1px black;
+  font-weight: 700;
+}
+
+.cities-container .city .city-percent {
+  position: relative;
+  width: 50px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.cities-container .city:first-child .city-percent:before {
+  content: '%';
+  font-size: 20px;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  text-shadow: 1px 1px black;
+  font-weight: 700;
+}
+
+.cities-container .city .city-cards, 
+.cities-container .city .city-percent,
+.cities-container .city .city-btn {
+  flex-shrink: 0;
+}
+
+.cards-total {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: black;
+  padding: 5px 0;
+}
