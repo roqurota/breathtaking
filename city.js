@@ -12,11 +12,13 @@ export default function newCity(city, parentUI, utils) {
 
     decreaseBtn.addEventListener('click', function(){
         utils.updateCityCards(city.name, '-');
+        utils.updateLocalStorage();
         utils.render();
     });
 
     increaseBtn.addEventListener('click', function(){
         utils.updateCityCards(city.name, '+');
+        utils.updateLocalStorage();
         utils.render();
     });
 }

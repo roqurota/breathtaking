@@ -68,6 +68,7 @@ body {
   width: 90vw;
   border-radius: 5px;
   background-color: #b9b396;
+  border: 5px solid black;
 }
 
 .popup-content {

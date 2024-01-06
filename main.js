@@ -5,11 +5,15 @@ import newCity from './city.js';
 
 let cities = {};
 
+if (localStorage.getItem('pandemic'))
+  cities = JSON.parse(localStorage.getItem('pandemic'));
+
 let utils = {};
 
 utils.render = render;
 utils.getTotalCards = getTotalCards;
 utils.updateCityCards = updateCityCards;
+utils.updateLocalStorage = updateLocalStorage;
 
 render();
 
@@ -27,6 +31,8 @@ addCity.addEventListener('click', () => {
 
       updateCityCards(cityName, '+');
 
+      updateLocalStorage();
+
       console.log('cities: ', cities)
 
       render();
@@ -42,6 +48,8 @@ refreshCities.addEventListener('click', () => {
 
       for (let city in cities)
         delete cities[city];
+
+      updateLocalStorage(true);
 
       render();
   });
@@ -82,4 +90,15 @@ function updateCityCards(cityName, value) {
 
     return;
   }
+}
+
+function updateLocalStorage(remove) {
+
+  if (remove) {
+    localStorage.removeItem('pandemic');
+
+    return;
+  }
+
+  localStorage.setItem('pandemic', JSON.stringify(cities));
 }
