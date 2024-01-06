@@ -29,8 +29,8 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
-    "start_url": "/Pandemic/",
-    "display": "standalone",
+    "start_url": "/?home=true",
+    "display": "fullscreen",
     "orientation": "portrait",
     "screenshots": [
       {
