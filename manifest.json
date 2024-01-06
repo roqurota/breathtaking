@@ -1,6 +1,6 @@
 {
-    "name": "Todo PWA",
-    "short_name": "Todo",
+    "name": "Pandemic",
+    "short_name": "Pandemic",
     "icons": [
       {
         "src": "icons/manifest-icon-192.maskable.png",
@@ -29,7 +29,15 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
-    "start_url": "/PWA-TodoApp/",
+    "start_url": "/Pandemic/",
     "display": "standalone",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "screenshots": [
+      {
+        "src": "/public/bg_md_2.jpeg",
+        "type": "image/jpeg",
+        "sizes": "1920x2880",
+        "form_factor": "narrow"
+      }
+    ]
   }
