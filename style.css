@@ -184,6 +184,10 @@ body {
   width: 44px;
   height: 44px;
   background-color: black;
+  background-image: url('./public/player.svg');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .select-player-scene {
