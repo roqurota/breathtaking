@@ -102,7 +102,7 @@ function touchStart(event) {
     
     circle.items[touch.identifier] = {
       ui: circleUI,
-      color: circle.colorIndex
+      color: circle.colors[circle.colorIndex]
     }
 
     circle.colorIndex++;
@@ -111,10 +111,11 @@ function touchStart(event) {
       circle.colorIndex = 0;
 
   }
+
+  console.log('circle: ', circle.items[0])
 }
 
 function touchMove(event) {
-  console.log('event: ', event)
 
   event.preventDefault();
   event.stopImmediatePropagation();
