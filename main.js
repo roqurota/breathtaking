@@ -29,6 +29,14 @@ let circle = {
   items: {}
 }
 
+let playerSelection = {
+  isStarted: false,
+  isSelected: false,
+  waitTime: 3,
+  startTime: new Date(),
+  timer: null
+}
+
 render();
 
 let addCity = document.body.querySelector('.add-city');
@@ -112,7 +120,9 @@ function touchStart(event) {
 
   }
 
-  console.log('circle: ', circle.items[0])
+  console.log(circle.items)
+
+  startPlayerSelection();
 }
 
 function touchMove(event) {
@@ -136,6 +146,30 @@ function touchEnd(event) {
 
     delete circle.items[touch.identifier];
   }
+}
+
+function startPlayerSelection() {
+  if (playerSelection.timer)
+    clearTimeout(playerSelection.timer);
+
+  playerSelection.timer = setTimeout(function(){
+    if (!Object.entries(circle.items).length)
+      return;
+
+    let identifiers = [];
+
+    for (let item in circle.items)
+      identifiers.push(item);
+
+    let winner = identifiers[Math.floor(Math.random() * identifiers.length)];
+
+    playerSelection.isSelected = true;
+
+    circle.items[winner].winner = true;
+
+    circle.items[winner].ui.classList.add('winner');
+
+  }, playerSelection.waitTime * 1000);
 }
 
 selectPlayerBtn.addEventListener('click', function() {

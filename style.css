@@ -212,3 +212,8 @@ body {
   color: #ffffff;
   font-size: 18px;
 }
+
+.select-player-scene .player-circle.winner {
+  border: 10px solid green;
+  transform: translate(-10px, -10px);
+}
