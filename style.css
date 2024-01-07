@@ -211,6 +211,15 @@ body {
   background-color: orangered;
   color: #ffffff;
   font-size: 18px;
+  transition: width 1s ease, height 1s ease, opacity .3s ease;
+}
+
+.select-player-scene .player-circle.hide {
+  opacity: 0;
+}
+
+.select-player-scene .player-circle.grow {
+
 }
 
 .select-player-scene .player-circle.winner {

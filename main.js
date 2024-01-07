@@ -30,10 +30,8 @@ let circle = {
 }
 
 let playerSelection = {
-  isStarted: false,
   isSelected: false,
   waitTime: 3,
-  startTime: new Date(),
   timer: null
 }
 
@@ -86,6 +84,9 @@ selectPlayerScene.addEventListener('touchend', touchEnd);
 
 
 function touchStart(event) {
+  if (playerSelection.isSelected)
+    return;
+
   for (let i = 0; i < event.touches.length; i++) {
     let touch = event.touches[i];
 
@@ -126,6 +127,8 @@ function touchStart(event) {
 }
 
 function touchMove(event) {
+  if (playerSelection.isSelected)
+    return;
 
   event.preventDefault();
   event.stopImmediatePropagation();
@@ -139,6 +142,9 @@ function touchMove(event) {
 }
 
 function touchEnd(event) {
+  if (playerSelection.isSelected)
+    return;
+
   for (let i = 0; i < event.changedTouches.length; i++) {
     let touch = event.changedTouches[i];
 
@@ -168,6 +174,18 @@ function startPlayerSelection() {
     circle.items[winner].winner = true;
 
     circle.items[winner].ui.classList.add('winner');
+
+    for (let item in circle.items)
+      if (item != winner)
+        circle.items[item].ui.classList.add('hide');
+
+    setTimeout(function(){
+      selectPlayerScene.classList.remove('shown');
+      selectPlayerScene.innerHTML = '';
+      circle.items = {};
+
+      playerSelection.isSelected = false;
+    }, 3000)
 
   }, playerSelection.waitTime * 1000);
 }
