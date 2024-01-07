@@ -93,7 +93,7 @@ function touchStart(event) {
 
       circle.items[touch.identifier].ui = circleUI;
 
-      circleUI.style.backgroundColor = '#' + circle.colors[circle.colorIndex].color;
+      circleUI.style.backgroundColor = '#' + circle.items[touch.identifier].color;
 
       continue;
     }
