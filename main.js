@@ -101,6 +101,11 @@ function touchStart(event) {
 }
 
 function touchMove(event) {
+  console.log('event: ', event)
+
+  event.preventDefault();
+  event.stopImmediatePropagation();
+
   for (let i = 0; i < event.touches.length; i++) {
     let touch = event.touches[i];
 
