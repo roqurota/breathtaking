@@ -77,6 +77,7 @@ refreshCities.addEventListener('click', () => {
 
 let selectPlayerBtn = document.body.querySelector('.select-player');
 let selectPlayerScene = document.body.querySelector('.select-player-scene');
+let selectPlayerBack = document.body.querySelector('.select-player-back');
 
 selectPlayerScene.addEventListener('touchstart', touchStart);
 selectPlayerScene.addEventListener('touchmove', touchMove);
@@ -87,6 +88,9 @@ function touchStart(event) {
   if (playerSelection.isSelected)
     return;
 
+  if (!selectPlayerBack.classList.contains('hide'))
+    selectPlayerBack.classList.add('hide');
+
   for (let i = 0; i < event.touches.length; i++) {
     let touch = event.touches[i];
 
@@ -95,7 +99,6 @@ function touchStart(event) {
     circleUI.style.height = circle.size + 'px';
     circleUI.style.left = touch.pageX - circle.size / 2 + 'px';
     circleUI.style.top = touch.pageY - circle.size / 2 + 'px';
-    circleUI.textContent = touch.identifier;
 
     if (circle.items[touch.identifier]) {
       circle.items[touch.identifier].ui.parentNode.removeChild(circle.items[touch.identifier].ui);
@@ -121,8 +124,6 @@ function touchStart(event) {
 
   }
 
-  console.log(circle.items)
-
   startPlayerSelection();
 }
 
@@ -144,6 +145,8 @@ function touchMove(event) {
 function touchEnd(event) {
   if (playerSelection.isSelected)
     return;
+  
+  selectPlayerBack.classList.remove('hide');
 
   for (let i = 0; i < event.changedTouches.length; i++) {
     let touch = event.changedTouches[i];
@@ -181,7 +184,10 @@ function startPlayerSelection() {
 
     setTimeout(function(){
       selectPlayerScene.classList.remove('shown');
-      selectPlayerScene.innerHTML = '';
+
+      for (let item in circle.items)
+        circle.items[item].ui.parentNode.removeChild(circle.items[item].ui);
+
       circle.items = {};
 
       playerSelection.isSelected = false;
@@ -189,6 +195,21 @@ function startPlayerSelection() {
 
   }, playerSelection.waitTime * 1000);
 }
+
+selectPlayerBack.addEventListener('touchstart', function(){
+
+  if (Object.entries(circle.items).length)
+    return;
+
+  selectPlayerScene.classList.remove('shown');
+
+  for (let item in circle.items)
+      circle.items[item].ui.parentNode.removeChild(circle.items[item].ui);
+    
+  circle.items = {};
+
+  playerSelection.isSelected = false;
+})
 
 selectPlayerBtn.addEventListener('click', function() {
   popup(
