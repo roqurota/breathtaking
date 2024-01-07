@@ -87,6 +87,7 @@ function touchStart(event) {
     circleUI.style.left = touch.pageX - circle.size / 2 + 'px';
     circleUI.style.top = touch.pageY - circle.size / 2 + 'px';
     circleUI.style.backgroundColor = '#' + circle.colors[circle.colorIndex];
+    circleUI.textContent = touch.identifier;
 
     circle.colorIndex++;
 
