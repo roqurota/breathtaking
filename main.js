@@ -185,6 +185,8 @@ function startPlayerSelection() {
     setTimeout(function(){
       selectPlayerScene.classList.remove('shown');
 
+      selectPlayerBack.classList.remove('hide');
+
       for (let item in circle.items)
         circle.items[item].ui.parentNode.removeChild(circle.items[item].ui);
 
