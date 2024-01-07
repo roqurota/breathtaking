@@ -86,17 +86,29 @@ function touchStart(event) {
     circleUI.style.height = circle.size + 'px';
     circleUI.style.left = touch.pageX - circle.size / 2 + 'px';
     circleUI.style.top = touch.pageY - circle.size / 2 + 'px';
-    circleUI.style.backgroundColor = '#' + circle.colors[circle.colorIndex];
     circleUI.textContent = touch.identifier;
+
+    if (circle.items[touch.identifier]) {
+      circle.items[touch.identifier].ui.parentNode.removeChild(circle.items[touch.identifier].ui);
+
+      circle.items[touch.identifier].ui = circleUI;
+
+      circleUI.style.backgroundColor = '#' + circle.colors[circle.colorIndex].color;
+
+      continue;
+    }
+
+    circleUI.style.backgroundColor = '#' + circle.colors[circle.colorIndex];
+    
+    circle.items[touch.identifier] = {
+      ui: circleUI,
+      color: circle.colorIndex
+    }
 
     circle.colorIndex++;
 
     if (circle.colorIndex >= circle.colors.length)
       circle.colorIndex = 0;
-
-    circle.items[touch.identifier] = {
-      ui: circleUI
-    }
 
   }
 }
